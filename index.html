@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>drq的回复</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 60px 20px 100px 20px;
+      background-color: #0a0a0f;
+      color: #ccc;
+      font-family: "Helvetica Neue", sans-serif;
+      overflow-x: hidden;
+      text-align: center;
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.06);
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      color: #eee;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.9;
+      white-space: pre-line;
+      margin-bottom: 40px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .button-wrapper {
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .button-wrapper:hover {
+      transform: scale(1.05);
+    }
+
+    button {
+      font-size: 1.05em;
+      min-width: 160px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      background-color: rgba(255,255,255,0.03);
+      color: #ddd;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.05);
+      transition: all 0.3s ease;
+
+      /* 默认禁用状态样式 */
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    #yes.active,
+    #yes:hover {
+      background-color: #6fbf73;
+      color: white;
+    }
+    #maybe.active,
+    #maybe:hover {
+      background-color: #999;
+      color: white;
+    }
+    #no.active,
+    #no:hover {
+      background-color: #e57373;
+      color: white;
+    }
+
+    .maybe-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .warning-tip {
+      margin-top: 6px;
+      font-size: 0.85em;
+      color: #f88;
+      display: none;
+    }
+
+    .maybe-wrapper:hover .warning-tip {
+      display: block;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .lantern {
+      position: absolute;
+      bottom: -100px;
+      animation: floatUp linear infinite;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.1); opacity: 0; }
+    }
+  </style>
+</head>
+<body onmousemove="handleMouseMove(event)">
+  <div id="lantern-container" style="position: fixed; inset: 0; z-index: -1;">
+    <!-- 简化后的灯笼 -->
+    <img src="lanterns/deng1.png" class="lantern" style="left: 10%; width: 40px; animation-duration: 25s; animation-delay: 2s;">
+    <img src="lanterns/deng2.png" class="lantern" style="left: 30%; width: 45px; animation-duration: 30s; animation-delay: 1s;">
+    <img src="lanterns/deng3.png" class="lantern" style="left: 50%; width: 50px; animation-duration: 28s; animation-delay: 3s;">
+    <img src="lanterns/deng4.png" class="lantern" style="left: 70%; width: 42px; animation-duration: 32s; animation-delay: 4s;">
+  </div>
+
+  <main>
+    <h1>来自drq的回复</h1>
+    <p>
+周好美，我其实不知道你在想什么；
+我很怕这种心被悬在空中的情形，所以我要逃跑一下。
+
+大概……你可以想象，我现在是一只把头埋进沙子里的鸵鸟
+（qrz，但屁股还露在外面）
+
+我把手机放在了一个我不太容易拿到的地方。
+
+等我鼓起勇气，再来看你做了什么决定。
+
+但其实我也很想在你回复我后立刻回复你。
+所以我做了这个页面，等你编辑完你的长文本后，就可以来看了。
+
+根据你对我的回复，点下去吧——
+<strong style="color: #a7e9af;">但记住哦，只能选一个哦。</strong>
+（只要点了其中一个，其他两个再点就会跳转到 404）
+<strong style="color: #f5829f;">！要想好再选哦</strong>
+你选了什么，我不会知道，所以也不用担心我在背后监听你的选择（qrz）。
+    </p>
+
+    <div class="button-container">
+      <div class="button-wrapper"><button id="yes">zgy选择留下来</button></div>
+      <div class="maybe-wrapper">
+        <div class="button-wrapper"><button id="maybe">zgy仍然不知道</button></div>
+        <div class="warning-tip">⚠️ 危！再想想？</div>
+      </div>
+      <div class="button-wrapper"><button id="no">zgy不要我了</button></div>
+    </div>
+
+    <div class="footer">—— drq 留</div>
+  </main>
+
+  <script>
+    const buttons = {
+      yes: document.getElementById("yes"),
+      maybe: document.getElementById("maybe"),
+      no: document.getElementById("no")
+    };
+    const chosen = localStorage.getItem("userChoice");
+    const openDate = new Date("2025-06-26T00:00:00"); // ISO格式，避免Safari解析失败
+    const now = new Date();
+
+    if (now >= openDate) {
+      for (const id in buttons) {
+        const btn = buttons[id];
+        btn.disabled = false;
+        btn.style.opacity = "1";
+        btn.style.pointerEvents = "auto";
+        btn.style.cursor = "pointer";
+
+        if (chosen === `${id}.html`) {
+          btn.classList.add("active");
+        }
+
+        btn.onclick = () => {
+          const target = `${id}.html`;
+          if (!chosen) {
+            btn.classList.add("active");
+            btn.style.transform = "scale(1.2)";
+            setTimeout(() => {
+              localStorage.setItem("userChoice", target);
+              window.location.href = target;
+            }, 350);
+          } else if (chosen === target) {
+            window.location.href = target;
+          } else {
+            window.location.href = "gone"; // 触发 GitHub Pages 的自定义404
+          }
+        };
+      }
+    } else {
+      const lockNotice = document.createElement("p");
+      lockNotice.innerHTML = "<strong style='color:#cc5555;'>当前不可选择，将于 <u>6月28日</u> 开放（qrz我就是很喜欢28这个数字嘛）。</strong>";
+      document.querySelector(".button-container").insertAdjacentElement("beforebegin", lockNotice);
+    }
+  </script>
+
+  <script>
+    function handleMouseMove(e) {
+      const now = Date.now();
+      if (!window.lastDotTime || now - window.lastDotTime > 300) {
+        window.lastDotTime = now;
+        const dot = document.createElement("div");
+        dot.textContent = "•";
+        dot.style.position = "fixed";
+        dot.style.left = `${e.clientX}px`;
+        dot.style.top = `${e.clientY}px`;
+        dot.style.color = "#ffdca8";
+        dot.style.pointerEvents = "none";
+        dot.style.opacity = "0.6";
+        dot.style.fontSize = "0.9em";
+        dot.style.transform = "translate(-50%, -50%) scale(1)";
+        dot.style.transition = "all 1.5s ease-out";
+        document.body.appendChild(dot);
+        requestAnimationFrame(() => {
+          dot.style.opacity = "0";
+          dot.style.transform = "translate(-50%, -50%) scale(0.5)";
+        });
+        setTimeout(() => dot.remove(), 1500);
+      }
+    }
+  </script>
+</body>
+</html>

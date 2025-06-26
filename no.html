@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>no？</title>
+  <style>
+    html, body {
+      font-family: "Helvetica Neue", sans-serif;
+      background: linear-gradient(to bottom, #f0f6ff, #e0eaf5);
+      color: #355070;
+      text-align: center;
+      padding: 60px 20px;
+      overflow-y: auto;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #2a4c77;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.15em;
+      line-height: 1.8;
+      max-width: 640px;
+      margin: 0 auto;
+      white-space: pre-wrap;
+    }
+
+    .blessing {
+      color: #57889c;
+      margin-top: 20px;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #7a8ca3;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      width: 8px;
+      height: 8px;
+      background: rgba(100, 100, 100, 0.15);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: fall 8s linear forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(120vh);
+        opacity: 0.05;
+      }
+    }
+    }
+  </style>
+
+  <script>
+    const choice = localStorage.getItem("userChoice");
+    if (choice !== "no.html") {
+      window.location.href = "/404.html";
+    }
+
+    function createSnowflake() {
+      const flake = document.createElement("div");
+      flake.className = "snowflake";
+      flake.style.left = Math.random() * window.innerWidth + "px";
+      flake.style.animationDuration = 3 + Math.random() * 3 + "s";
+      flake.style.opacity = 0.3 + Math.random() * 0.3;
+      document.body.appendChild(flake);
+
+      setTimeout(() => {
+        flake.remove();
+      }, 7000);
+    }
+
+    setInterval(createSnowflake, 80);
+  </script>
+</head>
+<body>
+  <h1 class="fade-in" style="animation-delay: 0.2s; animation-fill-mode: forwards;"></h1>
+
+  <p class="fade-in" style="animation-delay: 0.5s; animation-fill-mode: forwards;">
+    hmm... 是这个选项吗。<br><br>
+    我知道了，谢谢你。<br>
+    等我拿到手机看到你的消息后，应该不会再回复你了。<br><br>
+    如果非要说“最后的话”的话，该说什么好呢……<br>
+    hmm，我想想看哦。啊，想到了：
+  </p>
+
+  <div class="blessing fade-in" style="animation-delay: 1.2s; animation-fill-mode: forwards;">
+    希望你一定幸福！虽然你从来都不告诉我，但不论我去了哪里，我都有为你许愿哦。<br>
+    愿望的内容是：<br>
+    “希望和周好美在一起；如果最后不能在一起的话，希望这个人幸福，希望他一定要幸福。”<br><br>
+
+    所以最后的话也这么说好了：<br>
+    希望你幸福，希望你不要孤单。<br>
+    希望你未来更自信，<br>
+    希望你过不费力的、和妻子平稳而快乐的生活。<br><br>
+
+    而如果有一天你突然有了什么想做的事，<br>
+    希望你身边的人都能够支持你，<br>
+    希望你在做自己想做的事中获得快乐。<br><br>
+
+    请一定要开心和幸福。
+  </div>
+
+  <p class="fade-in" style="animation-delay: 2.5s; animation-fill-mode: forwards; margin-top: 40px;">
+    那么，我们，就此分开了哦。<br>
+    谢谢你的所有。
+  </p>
+
+  <div class="footer fade-in" style="animation-delay: 3.2s; animation-fill-mode: forwards;">
+    —— 憨憨，一定要幸福！你不要在看到这些后去微信额外给我发祝福，我不要，那太煽情了，会让我很难受的
+  </div>
+</body>
+</html>

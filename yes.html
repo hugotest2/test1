@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>yes</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", sans-serif;
+      background-color: #f6f2f3;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    canvas#particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 60px auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #e0d0d6;
+    }
+
+    h1 {
+      color: #d28aa4;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      line-height: 1.8;
+      font-size: 16px;
+      margin: 16px 0;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px dashed #e3b8c4;
+      margin: 32px 0;
+      opacity: 0.6;
+    }
+
+    .button-container {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    button {
+      background-color: #d28aa4;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #bd6e8d;
+    }
+
+    .list {
+      display: none;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f9f3f5;
+      border-radius: 8px;
+      border-left: 4px solid #d28aa4;
+    }
+
+    .list ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .list li {
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <div class="container">
+    <h1>yes？</h1>
+
+    <p>谢谢你选了这个选项。</p>
+    <p>秋秋开导了我。他说，如果我们决定继续走下去的话，让我告诉你，他和我不会再联系了。</p>
+    <p>在秋秋的开导下，我意识到自己也有错。在我的生气和彷徨中，我忽略了一个最重要的事实——周好美，是让我心暖暖的人，是我一直想守护的人。</p>
+    <p>对于我曾经给你带来的伤害，无论你有没有说出口，我都真诚地感到抱歉。</p>
+    <hr class="divider">
+
+    <p>但即便如此，我还是必须说：在这段关系里，你很多时候都让我感受到不对等、不诚心。你说的很多承诺听起来温柔动人，但真正落实到行动时，我却常常看不到你所说的“准备好”。</p>
+    <p>你把我的付出当成了理所当然（或许你也觉得我这样，但我需要你告诉我）。好处都占尽，当然“美哉”。可不平衡的收支，迟早会导致崩溃。</p>
+    <p>我真心希望我们的关系是平衡的，是一来一回的，是双方都走路，不是一人拖着另一人（我也不希望你拖着我走）。</p>
+    <hr class="divider">
+
+    <p>你说你准备好了和我一起生活，那我问你假如我们原地结婚，你会吗？我想你应该还不会的，你会说“未来未定”。</p>
+    <p>我尊重你的回答，但你有没有想过：“未来未定”到底是等待，还是拖延？未来怎么定？定在哪里？</p>
+    <p>其实，没有人等“未来定”了才出发。没有真的准备好的人，未来永远都不会定。</p>
+    <hr class="divider">
+
+    <p>我也恳请你，认真设想一下我的处境：</p>
+    <p>除了毕业，我现在还必须做出是否回国的决定。我很清楚，我回国的大动力就是你。</p>
+    <p>但你始终沉默、回避，我甚至不敢和你认真讨论未来。有时候我会觉得，我只是你情绪的投影：你难过时沉默、开心时又突然来逗我几句。这种若即若离，让我很没安全感。</p>
+    <p>我真的会怕，我选择了回国、等你毕业，到头来你说“你喜欢别人了”、“你觉得不合适了”、“你想换个方向了”。</p>
+    <p>那我是不是成了一个在自编自演、在搞笑的人？</p>
+    <p>从某个角度看，你原地读着PhD，而我却要先担着风险下注。我愿意的，那么你愿意付出什么？</p>
+    <hr class="divider">
+
+    <p>如果要走下去的话，我希望你是真诚的。</p>
+    <p>所以在我们谈未来之前，我希望我们能先谈清楚现在：</p>
+    <p>你愿不愿意对我们共同的未来承担责任？你有没有你自己的需求？你希望我知道、理解、尊重什么？</p>
+    <p>我一直在努力理解你、靠近你，我也希望你能愿意走出一步，来靠近我、理解我。</p>
+    <hr class="divider">
+
+    <p>我列出了一个乱乱谈问题清单。</p>
+
+    <div class="button-container">
+      <button onclick="document.querySelector('.list').style.display = 'block'">查看问题清单</button>
+    </div>
+
+    <div class="list">
+      <ul>
+        <li><strong>关于未来生活的城市：</strong>你倾向于国内、国外，还是两边尝试？如果是国内，是兰州、威海，还是我们共同探索新的地方？</li>
+        <li><strong>关于身份和规划：</strong>你是否希望一起申请国外长期身份（PR等）？需要的话，我会提前准备语言考试、了解政策。</li>
+        <li><strong>关于毕业和时间线：</strong>你希望我毕业后就回国？还是无所谓？你没所谓或者不想我回去的话我更愿意在外面呆着。</li>
+        <li><strong>关于婚姻：</strong>你想和我结婚吗？如果是，有没有初步想法是在你毕业前还是毕业后？</li>
+        <li><strong>关于小孩：</strong>你希望未来有小孩吗？如果是，什么时候、在哪生、是否能接受国外生产？这影响到我们短期内的一些决定。</li>
+        <li><strong>关于财务观：</strong>你对两人经济结构的期待是什么？共同财务、独立支出、还是其他？我们该早点把基本共识谈出来。</li>
+        <li><strong>关于家庭关系：</strong>我们要怎么处理彼此和父母家庭之间的边界和支持？如果父母意见不同怎么办？我们有统一立场吗？</li>
+        <li><strong>关于生活节奏：</strong>你想要怎样的日常生活？柴米油盐以外，我们的陪伴和共处方式是怎样的？</li>
+      </ul>
+      <p>所以你看，未来就在我的眼前。</p>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    function createParticles(count) {
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 2 + 1,
+          color: Math.random() > 0.5 ? 'rgba(255,192,203,0.7)' : 'rgba(255,215,0,0.7)',
+          speedY: Math.random() * 0.5 + 0.2,
+          speedX: Math.random() * 0.4 - 0.2
+        });
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = p.color;
+        ctx.fill();
+        p.y += p.speedY;
+        p.x += p.speedX;
+        if (p.y > height) p.y = 0;
+        if (p.x > width) p.x = 0;
+        if (p.x < 0) p.x = width;
+      }
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createParticles(100);
+    });
+
+    resizeCanvas();
+    createParticles(100);
+    animate();
+  </script>
+</body>
+</html>
