@@ -22,9 +22,9 @@
     }
 
     h1 {
-      font-size: 2.2em;
+      font-size: 2em;
       margin-bottom: 20px;
-      color: #eee;
+      color: #f5829f;
     }
 
     p {
@@ -60,8 +60,6 @@
       color: #ddd;
       box-shadow: 0 4px 10px rgba(255,255,255,0.05);
       transition: all 0.3s ease;
-
-      /* 默认禁用状态样式 */
       opacity: 0.5;
       pointer-events: none;
       cursor: not-allowed;
@@ -119,15 +117,37 @@
       20% { opacity: 1; }
       100% { transform: translateY(-100vh) scale(1.1); opacity: 0; }
     }
+
+    #resetDev {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: #ccc;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.9em;
+      cursor: pointer;
+      opacity: 0.4;
+      z-index: 9999;
+      display: none;
+    }
   </style>
 </head>
 <body onmousemove="handleMouseMove(event)">
+  <!-- 灯笼容器 -->
   <div id="lantern-container" style="position: fixed; inset: 0; z-index: -1;">
-    <!-- 简化后的灯笼 -->
-    <img src="lanterns/deng1.png" class="lantern" style="left: 10%; width: 40px; animation-duration: 25s; animation-delay: 2s;">
-    <img src="lanterns/deng2.png" class="lantern" style="left: 30%; width: 45px; animation-duration: 30s; animation-delay: 1s;">
-    <img src="lanterns/deng3.png" class="lantern" style="left: 50%; width: 50px; animation-duration: 28s; animation-delay: 3s;">
-    <img src="lanterns/deng4.png" class="lantern" style="left: 70%; width: 42px; animation-duration: 32s; animation-delay: 4s;">
+    <img src="lanterns/deng1.png" class="lantern" style="left: 5%; width: 40px; animation-duration: 26s; animation-delay: 1s;">
+    <img src="lanterns/deng2.png" class="lantern" style="left: 15%; width: 45px; animation-duration: 30s; animation-delay: 3s;">
+    <img src="lanterns/deng3.png" class="lantern" style="left: 25%; width: 48px; animation-duration: 28s; animation-delay: 2.2s;">
+    <img src="lanterns/deng4.png" class="lantern" style="left: 35%; width: 42px; animation-duration: 31s; animation-delay: 1.5s;">
+    <img src="lanterns/deng5.png" class="lantern" style="left: 45%; width: 44px; animation-duration: 29s; animation-delay: 2.8s;">
+    <img src="lanterns/deng6.png" class="lantern" style="left: 55%; width: 38px; animation-duration: 27s; animation-delay: 3.5s;">
+    <img src="lanterns/deng2.png" class="lantern" style="left: 65%; width: 41px; animation-duration: 30s; animation-delay: 4s;">
+    <img src="lanterns/deng3.png" class="lantern" style="left: 75%; width: 46px; animation-duration: 32s; animation-delay: 2.1s;">
+    <img src="lanterns/deng5.png" class="lantern" style="left: 85%; width: 40px; animation-duration: 26s; animation-delay: 1.7s;">
+    <img src="lanterns/deng6.png" class="lantern" style="left: 95%; width: 43px; animation-duration: 33s; animation-delay: 3.3s;">
   </div>
 
   <main>
@@ -147,7 +167,7 @@
 所以我做了这个页面，等你编辑完你的长文本后，就可以来看了。
 
 根据你对我的回复，点下去吧——
-<strong style="color: #a7e9af;">但记住哦，只能选一个哦。</strong>
+<strong style="color: #f5829f;">但记住哦，只能选一个哦。</strong>
 （只要点了其中一个，其他两个再点就会跳转到 404）
 <strong style="color: #f5829f;">！要想好再选哦</strong>
 你选了什么，我不会知道，所以也不用担心我在背后监听你的选择（qrz）。
@@ -165,6 +185,9 @@
     <div class="footer">—— drq 留</div>
   </main>
 
+  <!-- 开发者重置按钮 -->
+  <button id="resetDev">重置选项</button>
+
   <script>
     const buttons = {
       yes: document.getElementById("yes"),
@@ -172,7 +195,7 @@
       no: document.getElementById("no")
     };
     const chosen = localStorage.getItem("userChoice");
-    const openDate = new Date("2025-06-26T00:00:00"); // ISO格式，避免Safari解析失败
+    const openDate = new Date("2025-07-03T00:00:00");
     const now = new Date();
 
     if (now >= openDate) {
@@ -199,15 +222,27 @@
           } else if (chosen === target) {
             window.location.href = target;
           } else {
-            window.location.href = "gone"; // 触发 GitHub Pages 的自定义404
+            window.location.href = "gone"; // 自定义404
           }
         };
       }
     } else {
       const lockNotice = document.createElement("p");
-      lockNotice.innerHTML = "<strong style='color:#cc5555;'>当前不可选择，将于 <u>6月28日</u> 开放（qrz我就是很喜欢28这个数字嘛）。</strong>";
+      lockNotice.innerHTML = "<strong style='color:#f5829f;'>当前不可选择，将于 <u>07月03日</u> 开放。</strong>";
       document.querySelector(".button-container").insertAdjacentElement("beforebegin", lockNotice);
     }
+
+    // 🛠️ Shift + R 显示开发者按钮
+    const resetButton = document.getElementById("resetDev");
+    document.addEventListener("keydown", (e) => {
+      if (e.shiftKey && e.key.toLowerCase() === "r") {
+        resetButton.style.display = "block";
+      }
+    });
+    resetButton.onclick = () => {
+      localStorage.removeItem("userChoice");
+      location.reload();
+    };
   </script>
 
   <script>
@@ -220,20 +255,4 @@
         dot.style.position = "fixed";
         dot.style.left = `${e.clientX}px`;
         dot.style.top = `${e.clientY}px`;
-        dot.style.color = "#ffdca8";
-        dot.style.pointerEvents = "none";
-        dot.style.opacity = "0.6";
-        dot.style.fontSize = "0.9em";
-        dot.style.transform = "translate(-50%, -50%) scale(1)";
-        dot.style.transition = "all 1.5s ease-out";
-        document.body.appendChild(dot);
-        requestAnimationFrame(() => {
-          dot.style.opacity = "0";
-          dot.style.transform = "translate(-50%, -50%) scale(0.5)";
-        });
-        setTimeout(() => dot.remove(), 1500);
-      }
-    }
-  </script>
-</body>
-</html>
+        dot.style.color = "
