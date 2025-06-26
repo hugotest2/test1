@@ -195,7 +195,7 @@
       no: document.getElementById("no")
     };
     const chosen = localStorage.getItem("userChoice");
-    const openDate = new Date("2025-06-26T00:00:00");
+    const openDate = new Date("2025-07-03T00:00:00");
     const now = new Date();
 
     if (now >= openDate) {
@@ -255,4 +255,20 @@
         dot.style.position = "fixed";
         dot.style.left = `${e.clientX}px`;
         dot.style.top = `${e.clientY}px`;
-        dot.style.color = "
+        dot.style.color = "#ffdca8";
+        dot.style.pointerEvents = "none";
+        dot.style.opacity = "0.6";
+        dot.style.fontSize = "0.9em";
+        dot.style.transform = "translate(-50%, -50%) scale(1)";
+        dot.style.transition = "all 1.5s ease-out";
+        document.body.appendChild(dot);
+        requestAnimationFrame(() => {
+          dot.style.opacity = "0";
+          dot.style.transform = "translate(-50%, -50%) scale(0.5)";
+        });
+        setTimeout(() => dot.remove(), 1500);
+      }
+    }
+  </script>
+</body>
+</html>
