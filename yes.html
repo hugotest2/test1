@@ -1,47 +1,126 @@
-<p>谢谢你选了这个选项。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>你选择了继续</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 60px 20px 100px 20px;
+      background-color: #0a0a0f;
+      color: #ccc;
+      font-family: "Helvetica Neue", sans-serif;
+      text-align: center;
+      line-height: 1.8;
+    }
 
-<p>我知道这个选择对你不轻松，对我也是。</p>
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+    }
 
-<p>这段时间我情绪起伏很大，也说了很多狠话，但我其实一直在等你来告诉我：我们还可以一起好好走下去。</p>
+    h1 {
+      font-size: 2em;
+      color: #6fbf73;
+      margin-bottom: 30px;
+    }
 
-<hr class="divider">
+    p {
+      font-size: 1.05em;
+      margin-bottom: 24px;
+      white-space: pre-line;
+    }
 
-<p>我不会假装一切都没发生。我确实曾经很委屈，也很怕你其实并没有像我一样认真考虑我们的未来。</p>
-<p>有时候你的沉默让我感觉，我在自己一个人唱独角戏。我很怕我在往前跑，而你其实站在原地。</p>
+    .divider {
+      border: none;
+      border-top: 1px solid #444;
+      margin: 40px auto;
+      width: 80%;
+    }
 
-<p>但既然你选了留下来，我想说——我愿意把那些伤口放下，我们重新来谈：怎么一起走，怎么并肩，而不是谁拉着谁。</p>
+    .button-container {
+      margin: 40px 0 20px;
+    }
 
-<hr class="divider">
+    button {
+      padding: 10px 20px;
+      background-color: #6fbf73;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-<p>我不希望我们只是“没分手”。我希望这是一次更成熟的决定：</p>
-<p>不是互相忍着、将就着，而是把彼此真正放进自己的未来计划里。</p>
-<p>我愿意继续爱你、靠近你，但我也希望你能回应我，而不是让我猜。</p>
+    button:hover {
+      background-color: #5ba863;
+    }
 
-<p>你有什么顾虑、你需要什么安全感、你还不确定的点，我都愿意听。</p>
+    .list {
+      display: none;
+      text-align: left;
+      margin: 20px auto;
+      max-width: 680px;
+      color: #ddd;
+    }
 
-<hr class="divider">
+    ul {
+      padding-left: 20px;
+    }
 
-<p>所以，我们从“现在”开始一起走吧。</p>
-<p>为了走得远，我们需要聊一聊很多事。不是审问，也不是逼答，是我们要把这些事变成我们共同的共识。</p>
+    li {
+      margin-bottom: 14px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>你选择了继续</h1>
 
-<p>我整理了一些我们需要面对的问题，不急着今天说完，但我希望我们能开始认真谈。</p>
+    <p>谢谢你选了这个选项。</p>
+    <p>我知道这个选择对你不轻松，对我也是。</p>
+    <p>这段时间我情绪起伏很大，也说了很多狠话，但我其实一直在等你来告诉我：我们还可以一起好好走下去。</p>
 
-<div class="button-container">
-  <button onclick="document.querySelector('.list').style.display = 'block'">点击展开问题清单</button>
-</div>
+    <hr class="divider">
 
-<div class="list" style="display: none;">
-  <ul>
-    <li><strong>未来生活的城市：</strong>你倾向国内还是国外？我希望我们能找到共同的方向。</li>
-    <li><strong>身份和规划：</strong>是否想一起规划长期居留？我可以配合准备。</li>
-    <li><strong>毕业和时间线：</strong>我的毕业时间、你的毕业时间，我们怎么协调？</li>
-    <li><strong>婚姻：</strong>你怎么看待我们结婚这件事？你有没有一个粗略的时间预期？</li>
-    <li><strong>孩子：</strong>你想要孩子吗？什么时候？在哪里生？这影响很多现实问题。</li>
-    <li><strong>财务：</strong>你对经济模式怎么看？我们怎么保持自由和合作？</li>
-    <li><strong>家庭关系：</strong>如何处理和彼此父母的关系？遇到分歧怎么办？</li>
-    <li><strong>生活节奏：</strong>你理想的“日常”是什么样？我们怎么相处才让彼此舒服？</li>
-  </ul>
-  <p>我并不期待你立刻有所有答案，我只希望我们可以认真开始。</p>
-</div>
+    <p>我不会假装一切都没发生。我确实曾经很委屈，也很怕你其实并没有像我一样认真考虑我们的未来。</p>
+    <p>有时候你的沉默让我感觉，我在自己一个人唱独角戏。我很怕我在往前跑，而你其实站在原地。</p>
+    <p>但既然你选了留下来，我想说——我愿意把那些伤口放下，我们重新来谈：怎么一起走，怎么并肩，而不是谁拉着谁。</p>
 
-<p style="margin-top: 30px;">谢谢你选了这个选项。这次，请我们都走得认真一些。</p>
+    <hr class="divider">
+
+    <p>我不希望我们只是“没分手”。我希望这是一次更成熟的决定：</p>
+    <p>不是互相忍着、将就着，而是把彼此真正放进自己的未来计划里。</p>
+    <p>我愿意继续爱你、靠近你，但我也希望你能回应我，而不是让我猜。</p>
+    <p>你有什么顾虑、你需要什么安全感、你还不确定的点，我都愿意听。</p>
+
+    <hr class="divider">
+
+    <p>所以，我们从“现在”开始一起走吧。</p>
+    <p>为了走得远，我们需要聊一聊很多事。不是审问，也不是逼答，是我们要把这些事变成我们共同的共识。</p>
+    <p>我整理了一些我们需要面对的问题，不急着今天说完，但我希望我们能开始认真谈。</p>
+
+    <div class="button-container">
+      <button onclick="document.querySelector('.list').style.display = 'block'">点击展开问题清单</button>
+    </div>
+
+    <div class="list">
+      <ul>
+        <li><strong>未来生活的城市：</strong>你倾向国内还是国外？我希望我们能找到共同的方向。</li>
+        <li><strong>身份和规划：</strong>是否想一起规划长期居留？我可以配合准备。</li>
+        <li><strong>毕业和时间线：</strong>我的毕业时间、你的毕业时间，我们怎么协调？</li>
+        <li><strong>婚姻：</strong>你怎么看待我们结婚这件事？你有没有一个粗略的时间预期？</li>
+        <li><strong>孩子：</strong>你想要孩子吗？什么时候？在哪里生？这影响很多现实问题。</li>
+        <li><strong>财务：</strong>你对经济模式怎么看？我们怎么保持自由和合作？</li>
+        <li><strong>家庭关系：</strong>如何处理和彼此父母的关系？遇到分歧怎么办？</li>
+        <li><strong>生活节奏：</strong>你理想的“日常”是什么样？我们怎么相处才让彼此舒服？</li>
+      </ul>
+      <p>我并不期待你立刻有所有答案，我只希望我们可以认真开始。</p>
+    </div>
+
+    <p style="margin-top: 30px;">谢谢你选了这个选项。这次，请我们都走得认真一些。</p>
+  </main>
+</body>
+</html>
